@@ -1,0 +1,161 @@
+Composer V1 creation
+---------------------
+gcloud composer environments create composer-1-environment --location us-central1  --image-version composer-1.20.7-airflow-2.4.3
+
+Composer V1 deletion
+---------------------
+gcloud composer environments delete example-environment --location=us-central1
+
+Extra
+-----
+gcloud projects create sample-project-2023 --name="Sample project"
+gcloud config set project fabled-lyceum-379607
+gcloud services enable composer.googleapis.com
+gcloud projects list
+gcloud config set project gcddemo379716
+gcloud projects list --format="table(projectId)"
+
+gcloud iam service-accounts list
+gcloud iam service-accounts delete composer-custom-sa@672422450342.iam.gserviceaccount.com
+
+
+
+Create Service Account
+gcloud iam service-accounts create composer-custom-sa
+
+gcloud projects get-iam-policy gcp-prep-2023 --format=json
+gcloud iam service-accounts get-iam-policy service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com --format=json
+gcloud iam service-accounts get-iam-policy serviceAccount:service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com --format=json
+
+gcloud composer environments create example-environment \
+    --location us-central1 \
+    --image-version composer-2.1.7-airflow-2.4.3 \
+    --service-account "example-account@example-project.iam.gserviceaccount.com"
+
+gcloud projects add-iam-policy-binding SERVICE_ACCOUNT \
+    --member serviceAccount:service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+
+
+gcloud projects add-iam-policy-binding gcp-prep-2023 --member="serviceAccount:composer-custom-sa@gcp-prep-2023.iam.gserviceaccount.com" --role="roles/editor"
+gcloud projects add-iam-policy-binding composer-custom-sa@gcp-prep-2023.iam.gserviceaccount.com --member serviceAccount:service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com --role roles/composer.ServiceAgentV2Ext
+
+
+gcloud projects add-iam-policy-binding composer-custom-sa \
+    --member serviceAccount:service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud projects add-iam-policy-binding composer-custom-sa@gcp-prep-2023.iam.gserviceaccount.com \
+    --member serviceAccount:service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud projects add-iam-policy-binding composer-custom-sa@gcp-prep-2023.iam.gserviceaccount.com \
+    --member serviceAccount:service-672422450342@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud projects add-iam-policy-binding composer-custom-sa@gcp-prep-2023.iam.gserviceaccount.com --member serviceAccount:service-gcp-prep-2023@cloudcomposer-accounts.iam.gserviceaccount.com --role roles/composer.ServiceAgentV2Ext
+
+
+gcloud composer environments create example-environment \
+    --location us-central1 \
+    --image-version composer-2.1.7-airflow-2.4.3 \
+    --service-account "composer-custom-sa@672422450342.iam.gserviceaccount.com"
+
+
+gcloud iam service-accounts delete composer-custom-sa@672422450342.iam.gserviceaccount.com
+gcloud iam service-accounts delete my-iam-account@my-project.iam.gserviceaccount.com
+
+gcloud.projects.add-iam-policy-binding) INVALID_ARGUMENT: Request contains an invalid argument
+
+
+
+-------------------------------
+Create composer environment
+----------------------------
+gcloud composer environments create composer-environment \
+    --location us-central1 \
+    --image-version composer-2.1.7-airflow-2.4.3
+
+gcpprep2021@cloudshell:~ (fabled-lyceum-379607)$ gcloud composer environments create composer-environment \
+    --location us-central1 \
+    --image-version composer-2.1.7-airflow-2.4.3
+ERROR: (gcloud.composer.environments.create) FAILED_PRECONDITION: Composer API Service Agent service account (service-609230014398@cloudcomposer-accounts.iam.gserviceaccount.com) does not have required permissions set. Cloud Composer v2 API Service Agent Extension role might be missing. Please refer to https://cloud.google.com/composer/docs/composer-2/create-environments#grant-permissions and Composer Creation Troubleshooting pages to resolve this issue.
+gcpprep2021@cloudshell:~ (fabled-lyceum-379607)$
+
+
+service-609230014398@cloudcomposer-accounts.iam.gserviceaccount.com
+
+
+gcloud projects add-iam-policy-binding SERVICE_ACCOUNT \
+    --member serviceAccount:service-PROJECT_NUMBER@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud projects add-iam-policy-binding 609230014398-compute@developer.gserviceaccount.com \
+    --member serviceAccount:service-609230014398@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud projects add-iam-policy-binding example-account@example-project.iam.gserviceaccount.com \
+    --member serviceAccount:service-00000000000@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud iam service-accounts create composer-custom-sa
+
+gcloud iam service-accounts create composer-sa
+gcloud projects add-iam-policy-binding fabled-lyceum-379607 --member="serviceAccount:composer-sa@fabled-lyceum-379607.iam.gserviceaccount.com" --role="roles/editor" --role="roles/composer.worker" --role roles/composer.ServiceAgentV2Ext
+
+
+gcloud projects add-iam-policy-binding fabled-lyceum-379607 --member="serviceAccount:composer-sa@fabled-lyceum-379607.iam.gserviceaccount.com" --role="roles/editor" --role="roles/composer.worker" --role="roles/composer.environments.create"
+
+PROJECT_ID: fabled-lyceum-379607
+NAME: My First Project
+PROJECT_NUMBER: 609230014398
+
+
+gcloud projects add-iam-policy-binding fabled-lyceum-379607 \
+    --member serviceAccount:service-609230014398@cloudcomposer-accounts.iam.gserviceaccount.com \
+    --role roles/composer.ServiceAgentV2Ext
+
+gcloud composer environments create composer-environment     --location us-central1     --image-version composer-2.1.7-airflow-2.4.3
+
+
+ERROR: (gcloud.composer.environments.create) Error creating [projects/fabled-lyceum-379607/locations/us-central1/environments/composer-environment]: Operation [projects/fabled-lyceum-379607/locations/us-central1/operations/48624d54-ca51-4da2-9e3d-6c8a87bc559f] failed: Failed to create environment, but no error was surfaced. This can be caused by a lack of proper permissions. Check if this environment's service account 609230014398-compute@developer.gserviceaccount.com has the 'roles/composer.worker' role and there is no firewall inhibiting internal communications set. In case, it is a Compute default service account it should have Editor permissions. For the required permissions information, please, refer to https://cloud.google.com/composer/docs/how-to/access-control  https://cloud.google.com/composer/docs/troubleshooting-environment-creation page contains more troubleshooting instructions
+Couldn't bring up ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa'] in time.
+Essential objects couldn't be created: ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa']
+gcpprep2021@cloudshell:~ (fabled-lyceum-379607)$
+
+
+gcloud composer environments create composer-environment \
+    --location us-central1 \
+    --image-version composer-2.1.7-airflow-2.4.3 \
+    --service-account "composer-sa@fabled-lyceum-379607.iam.gserviceaccount.com"
+
+gcloud composer environments delete composer-environment --location=us-central1
+ERROR: (gcloud.composer.environments.create) Error creating [projects/fabled-lyceum-379607/locations/us-central1/environments/composer-environment]: Operation [projects/fabled-lyceum-379607/locations/us-central1/operations/ff8120ab-7f4f-4647-9988-3aeff1e6f445] failed: Failed to create environment, but no error was surfaced. This can be caused by a lack of proper permissions. Check if this environment's service account composer-sa@fabled-lyceum-379607.iam.gserviceaccount.com has the 'roles/composer.worker' role and there is no firewall inhibiting internal communications set. In case, it is a Compute default service account it should have Editor permissions. For the required permissions information, please, refer to https://cloud.google.com/composer/docs/how-to/access-control  https://cloud.google.com/composer/docs/troubleshooting-environment-creation page contains more troubleshooting instructions
+Couldn't bring up ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa'] in time.
+Essential objects couldn't be created: ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa']
+gcpprep2021@cloudshell:~ (fabled-lyceum-379607)$
+
+
+ERROR: (gcloud.composer.environments.create) Error creating [projects/fabled-lyceum-379607/locations/us-central1/environments/composer-environment]: Operation [projects/fabled-lyceum-379607/locations/us-central1/operations/26d9e53d-cf1e-45ac-b9a4-07fc1c876c6b] failed: Failed to create environment, but no error was surfaced. This can be caused by a lack of proper permissions. Check if this environment's service account 609230014398-compute@developer.gserviceaccount.com has the 'roles/composer.worker' role and there is no firewall inhibiting internal communications set. In case, it is a Compute default service account it should have Editor permissions. For the required permissions information, please, refer to https://cloud.google.com/composer/docs/how-to/access-control  https://cloud.google.com/composer/docs/troubleshooting-environment-creation page contains more troubleshooting instructions
+Couldn't bring up ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa'] in time.
+Essential objects couldn't be created: ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa']
+gcpprep2021@cloudshell:~ (fabled-lyceum-379607)$
+
+gcloud projects get-iam-policy fabled-lyceum-379607  \
+--flatten="bindings[].members" \
+--format='table(bindings.role)' \
+--filter="bindings.members:composer-sa@fabled-lyceum-379607.iam.gserviceaccount.com"
+
+
+
+https://stackoverflow.com/questions/71156713/gcp-cloud-composer-2-create-operation-on-this-environment-failed
+
+(gcloud.composer.environments.create) Error creating [projects/fabled-lyceum-379607/locations/us-central1/environments/composer-environment]: Operation [projects/fabled-lyceum-379607/locations/us-central1/operations/ff32069e-721e-48f3-a8b2-cd0d8f338491] failed: Failed to create environment, but no error was surfaced. This can be caused by a lack of proper permissions. Check if this environment's service account 609230014398-compute@developer.gserviceaccount.com has the 'roles/composer.worker' role and there is no firewall inhibiting internal communications set. In case, it is a Compute default service account it should have Editor permissions. For the required permissions information, please, refer to https://cloud.google.com/composer/docs/how-to/access-control  https://cloud.google.com/composer/docs/troubleshooting-environment-creation page contains more troubleshooting instructions
+Couldn't bring up ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa'] in time.
+Essential objects couldn't be created: ['airflow-scheduler', 'airflow-webserver', 'airflow-monitoring', 'worker-set', 'worker-hpa']
+
+
+gcloud composer environments create example-environment \
+    --location us-central1 \
+    --image-version composer-1.20.7-airflow-1.10.15
